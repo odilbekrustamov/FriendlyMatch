@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragments.HomeFragment"
+    android:background="@drawable/back"
+    android:gravity="top|center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="265dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="100dp"
+        android:textSize="32sp"
+        android:translationZ="10dp"
+        android:outlineProvider="bounds"
+        app:elevation="30dp"
+        android:stateListAnimator="@null"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@null"
+        android:text="@string/str_settings"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCompositions"
+        android:layout_width="265dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="30dp"
+        android:textSize="32sp"
+        app:elevation="30dp"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@null"
+        android:text="@string/str_composition"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTeams"
+        android:layout_width="265dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="30dp"
+        android:textSize="32sp"
+        app:elevation="10dp"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@null"
+        android:text="@string/str_teams"/>
+
+</LinearLayout>

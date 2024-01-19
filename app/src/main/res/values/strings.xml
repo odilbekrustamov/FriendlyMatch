@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Friendly Match</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_settings">SETTINGS</string>
+    <string name="str_composition">COMPOSITION</string>
+    <string name="str_teams">TEAMS</string>
+</resources>

@@ -11,6 +11,7 @@ import com.match.betweenfriends.R
 import com.match.betweenfriends.common.SharedPref
 import com.match.betweenfriends.databinding.ActivityMainBinding
 import com.match.betweenfriends.common.KeyValues.SOUND
+import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

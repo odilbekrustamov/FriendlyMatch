@@ -9,6 +9,8 @@ import com.match.betweenfriends.common.KeyValues.FIRSTTIME
 import com.match.betweenfriends.common.SharedPref
 import com.match.betweenfriends.data.model.Player
 import com.match.betweenfriends.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
@@ -39,8 +41,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             sharedPref.saveIsFirstTime(FIRSTTIME, false)
             for (i in 1..11){
                 val id = if (i > 0){  "0${i}" }else{ "$i"} + ". Player Name"
-                val player = Player(teamId = 1001, caughtGoals = 100)
-                players.add(Player(teamId = 1001, playerName =  "id"))
+                val player = Player(userId = 1,teamId = 1001, caughtGoals = 100)
+                players.add(Player(userId = 1,teamId = 1001, playerName =  "id"))
             }
         }
     }

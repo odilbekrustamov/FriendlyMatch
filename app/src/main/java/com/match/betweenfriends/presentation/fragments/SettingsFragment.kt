@@ -10,6 +10,7 @@ import com.match.betweenfriends.databinding.FragmentSettingsBinding
 import com.match.betweenfriends.presentation.activity.MainActivity
 import com.match.betweenfriends.common.KeyValues.SOUND
 import com.match.betweenfriends.common.KeyValues.VIBRATION
+import dagger.hilt.android.AndroidEntryPoint
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private lateinit var binding: FragmentSettingsBinding

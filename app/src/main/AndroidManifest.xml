@@ -13,17 +13,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FriendlyMatch"
+        android:theme="@style/FriendlyMatchTheme"
         tools:targetApi="31">
         <activity
             android:name=".presentation.activity.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".service.MusicService"
+            android:enabled="true" />
     </application>
 
 </manifest>

@@ -1,47 +1,61 @@
 package com.match.betweenfriends.presentation.activity
 
-import android.content.Context
-import android.media.AudioManager
-import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import com.match.betweenfriends.R
+import android.view.Window
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.match.betweenfriends.common.SharedPref
 import com.match.betweenfriends.databinding.ActivityMainBinding
-import com.match.betweenfriends.common.KeyValues.SOUND
-import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
+    private lateinit var viewModel: MainActivityViewModel
     private lateinit var sharedPref: SharedPref
-    lateinit var mMediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
+        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         sharedPref = SharedPref(this)
 
-        mMediaPlayer = MediaPlayer.create(this, R.raw.all_screens)
-
-
-        if (sharedPref.getIsSound(SOUND)) {
-            val audioManager =
-                getSystemService(Context.AUDIO_SERVICE) as AudioManager
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
-            mMediaPlayer.isLooping = true
-            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-            mMediaPlayer.start()
+        if (sharedPref.sound) {
+            viewModel.startService()
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        mMediaPlayer.stop()
+    fun startBackgroundMusicService() {
+        viewModel.startService()
+    }
+
+    fun stopBackgroundMusicService() {
+        viewModel.stopService()
+    }
+
+    fun vibrate() {
+        viewModel.vibrate()
+    }
+
+    override fun onStart() {
+        if (sharedPref.sound) {
+            viewModel.resumeService()
+        }
+        super.onStart()
+    }
+
+    override fun onPause() {
+        if (sharedPref.sound) {
+            viewModel.pauseService()
+        }
+        super.onPause()
     }
 }
